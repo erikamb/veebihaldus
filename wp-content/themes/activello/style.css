@@ -42,7 +42,7 @@ sparkling is based on Underscores http://underscores.me/, (C) 2012-2015 Automatt
 
 /* =Global
 ----------------------------------------------- */
-
+.cat-item a{display: none;}
 body {
     color: #696969;
     background-color: #FFFFFF;
