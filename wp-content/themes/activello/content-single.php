@@ -13,6 +13,7 @@
 				<?php if ( 'post' == get_post_type() ) : ?>
 				<div class="entry-meta">
 					<?php activello_posted_on(); ?>
+					<?php post_read_time(); ?>
 
 					<?php
 						edit_post_link(
@@ -29,15 +30,15 @@
 				</div><!-- .entry-meta -->
 				<?php endif; ?>
 			</header><!-- .entry-header -->
-			
+
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
                     <?php the_post_thumbnail( 'activello-featured', array( 'class' => 'single-featured' )); ?>
             </a>
-			
+
 			<div class="entry-content">
 
 				<?php the_content(); ?>
-				
+
 				<?php
 				wp_link_pages( array(
 					'before'            => '<div class="page-links">'.esc_html__( 'Pages:', 'activello' ),
@@ -48,12 +49,12 @@
 					'echo'              => 1
 						) );
 				?>
-				
+
 			</div><!-- .entry-content -->
             <div class="entry-footer">
                 <?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
                 <span class="comments-link"><?php comments_popup_link( esc_html__( 'No comments yet', 'activello' ), esc_html__( 'Comment (1)', 'activello' ), esc_html__( 'Comments (%)', 'activello' ) ); ?></span>
-                <?php endif; ?>	
+                <?php endif; ?>
                 <?php if(has_tag()) : ?>
                 <!-- tags -->
                 <div class="tagcloud">

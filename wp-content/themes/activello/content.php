@@ -14,6 +14,8 @@
 				<?php if ( 'post' == get_post_type() ) : ?>
 				<div class="entry-meta">
 					<?php activello_posted_on(); ?>
+					<?php post_read_time(); ?>
+
 
 					<?php
 						edit_post_link(
