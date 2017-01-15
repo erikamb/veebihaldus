@@ -1,0 +1,75 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: 2017-01-15 20:56:48
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.1.26
+WORDPRESS:	4.6.1
+PHP INFO:	7.0.13-0ubuntu0.16.04.1 | SAPI: apache2handler
+SERVER:		Apache/2.4.18 (Ubuntu) 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 2048M (128M default) 
+MEMORY STACK: 4MB 
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   PHP(query limit - 100)
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported 
+TABLES: total:23 | filtered:0 | create:23 
+FILTERED: [] 
+SQL CREATED: 20170115_portfoolio_587be1ef4efdd6799170115205615_database.sql 
+SQL FILE SIZE: 230.12KB (235639) 
+SQL FILE TIME: 2017-01-15 20:56:48 
+SQL RUNTIME: 0.04 sec. 
+
+******************************************************************************** 
+ARCHIVE (ZIP): 
+******************************************************************************** 
+ARCHIVE DIR:  /var/www/html 
+ARCHIVE FILE: 20170115_portfoolio_587be1ef4efdd6799170115205615_archive.zip 
+FILTERS: *OFF* 
+DIRS: not set 
+EXTS:  not set 
+---------------------------------------- 
+COMPRESSING 
+SIZE:	107.89MB 
+STATS:	Dirs 525 | Files 5,590 
+SQL ADDED: 20170115_portfoolio_587be1ef4efdd6799170115205615_database.sql 
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 6115
+    [filename] => /var/www/html/wp-snapshots/tmp/20170115_portfoolio_587be1ef4efdd6799170115205615_archive.zip
+    [comment] => 
+)
+ 
+COMPRESSION RESULT: '1' 
+COMPRESSED SIZE: 84.63MB 
+ARCHIVE RUNTIME: 8.53 sec. 
+MEMORY STACK: 6MB 
+
+******************************************************************************** 
+MAKE INSTALLER: 
+******************************************************************************** 
+Build Start 
+Build Finished 
+Preping for use 
+Template parsed with new data 
+Complete [/var/www/html/wp-snapshots/tmp/20170115_portfoolio_587be1ef4efdd6799170115205615_installer.php] 
+Added to archive 
+
+******************************************************************************** 
+INTEGRITY CHECKS: 
+******************************************************************************** 
+SQL File: 230.12KB 
+Installer File: 352.36KB 
+Archive File: 84.63MB  
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 9.01 sec.
+PEAK PHP MEMORY USED: 8MB
+DONE PROCESSING => 20170115_portfoolio 2017-01-15 20:56:57
+ 

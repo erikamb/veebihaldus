@@ -1,0 +1,7 @@
+
+
+# BEGIN WordPress Error Pages
+
+ErrorDocument 500 https://erikamb.me/error-500
+
+# END WordPress Error Pages
