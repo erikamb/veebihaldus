@@ -273,3 +273,33 @@ function activello_header_search_filter($form){
     $form = '<form action="'.esc_url( home_url( "/" ) ).'" method="get"><input type="text" name="s" value="'.get_search_query().'" placeholder="'. esc_attr_x( __('Search', 'activello'), 'search placeholder', 'activello' ).'"><button type="submit" class="header-search-icon" name="submit" id="searchsubmit" value="'. esc_attr_x( 'Search', 'submit button', 'activello' ).'"><i class="fa fa-search"></i></button></form>';
     return $form;
 }
+
+// Create Custom Error Pages in WordPress using HTACCESS
+function royal_custom_error_pages() {
+
+    // Get HTACCESS path & dynamic website url
+    $htaccess_file = '.htaccess';
+    $website_url = get_bloginfo('url').'/';
+
+    // Check & prevent writing error pages more than once
+    $check_file = file_get_contents($htaccess_file);
+    $this_string = '# BEGIN WordPress Error Pages';
+
+    if( strpos( $check_file, $this_string ) === false) {
+
+    // Setup Error page locations dynamically
+    $error_pages .= PHP_EOL. PHP_EOL . '# BEGIN WordPress Error Pages'. PHP_EOL. PHP_EOL;
+    $error_pages .= 'ErrorDocument 500 '.$website_url.'error-500'.PHP_EOL;
+    $error_pages .= PHP_EOL. '# END WordPress Error Pages'. PHP_EOL;
+
+    // Write the error page locations to HTACCESS
+    $htaccess = fopen( $htaccess_file, 'a+');
+    fwrite( $htaccess, $error_pages );
+    fclose($htaccess);
+
+    }
+}
+
+add_action('init','royal_custom_error_pages'); // This will run the function everytime, not ideal!
+
+// register_activation_hook( __FILE__, 'royal_custom_error_pages' ); // Using a plugin, runs only once!
