@@ -42,8 +42,14 @@
 						<?php wp_meta(); ?>
 					</ul>
 				</aside>
+				<ul class="feeds">
+   				 <li><a href="<?php bloginfo('rss2_url'); ?>" title="<?php _e('Syndicate this site using RSS'); ?>"><?php _e('<abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
+   				 <li><a href="<?php bloginfo('atom_url'); ?>" title="<?php _e('Syndicate this site using Atom'); ?>"><?php _e('Atom'); ?></a></li>
+  				 <li><a href="<?php bloginfo('comments_rss2_url'); ?>" title="<?php _e('The latest comments to all posts in RSS'); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
+				</ul>
 
 			<?php endif; // end sidebar widget area ?>
 		</div>
 	</div><!-- #secondary -->
 	<?php endif; ?>
+
