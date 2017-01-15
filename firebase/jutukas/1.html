@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Jutukas</title>
+	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBodiHXhee1qrgi-0eSiTAirYBJrkDZF88",
+    authDomain: "objveeb.firebaseapp.com",
+    databaseURL: "https://objveeb.firebaseio.com",
+    storageBucket: "objveeb.appspot.com",
+    messagingSenderId: "612724541918"
+  };
+  firebase.initializeApp(config);
+  firebase.auth().signInAnonymously().catch(function(error) {});
+  firebase.database().ref().child('jutukas').
+     push({teade: "siseneti", aeg: new Date().toString()}); 
+  firebase.database().ref().child('jutukas').child('teated')
+    .on("child_added", function(kirjeviit){
+	  document.getElementById("vastus").innerHTML+="<br />"+kirjeviit.val();
+  });
+  function salvesta(){
+     firebase.database().ref().child('jutukas').child('teated')
+	   .push(document.getElementById("kast1").value);
+	 document.getElementById("kast1").value="";
+  }
+</script>
+  </head>
+  <body>
+     <input type="text" id="kast1" />
+	 <input type="button" value="Salvesta" onClick="salvesta()" />
+	 <div id="vastus"></div>
+  </body>
+</html>

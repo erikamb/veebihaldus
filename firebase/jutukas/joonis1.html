@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Jutukas</title>
+	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBodiHXhee1qrgi-0eSiTAirYBJrkDZF88",
+    authDomain: "objveeb.firebaseapp.com",
+    databaseURL: "https://objveeb.firebaseio.com",
+    storageBucket: "objveeb.appspot.com",
+    messagingSenderId: "612724541918"
+  };
+  firebase.initializeApp(config);
+  firebase.auth().signInAnonymously().catch(function(error) {});
+  firebase.database().ref().child('loendur').on("value", function(kirjeviit){
+	  document.getElementById("vastus").innerHTML=kirjeviit.val();
+  });
+  function suurenda(){
+     firebase.database().ref().child('loendur').set(
+	   parseInt(document.getElementById("vastus").innerHTML)+1);
+  }
+  function hiirAlla(e){
+    var t=document.getElementById("tahvel");
+	var tahvlikoht=t.getBoundingClientRect();
+	var hx=e.clientX-tahvlikoht.left;
+	var hy=e.clientY-tahvlikoht.top;
+    firebase.database().ref().child('tahvel').push({x:hx, y:hy});	
+  }
+</script>
+  </head>
+  <body>
+     <canvas id="tahvel" height="600" width="400" style="border:1px solid black" 
+	  onmousedown="hiirAlla(event)" ></canvas>
+	 <input type="button" value="Suurenda" onClick="suurenda()" />
+	 <div id="vastus"></div>
+  </body>
+  <script>
+    firebase.database().ref().child('tahvel').on("child_added", function(kirjeviit){
+	  kirje=kirjeviit.val();
+	  var g=document.getElementById("tahvel").getContext("2d");
+	  g.beginPath();
+	  g.arc(kirje.x, kirje.y, 10, 0, 2*Math.PI, true);
+	  g.stroke();
+	});
+  </script>
+</html>

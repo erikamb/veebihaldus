@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <title>kontrolltoo</title>
+	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBezR8sNMHhZh0eCwi4HvPRQ6l5RVHSSUM",
+    authDomain: "kontrolltoo-98380.firebaseapp.com",
+    databaseURL: "https://kontrolltoo-98380.firebaseio.com",
+    storageBucket: "kontrolltoo-98380.appspot.com",
+    messagingSenderId: "910035844024"
+  };
+  firebase.initializeApp(config);
+  firebase.auth().signInAnonymously().catch(function(error) {});
+  var kataloog="tahvel2";
+  function kustuta(){
+     firebase.database().ref().child(kataloog).set(null);
+  }
+  
+  function hiirAlla(e){
+    var t=document.getElementById("tahvel");
+	var tahvlikoht=t.getBoundingClientRect();
+	var hx=e.clientX-tahvlikoht.left;
+	var hy=e.clientY-tahvlikoht.top;
+    firebase.database().ref().child(kataloog).push({x:hx, y:hy});	
+  }
+  
+
+</script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  </head>
+  <body>
+     <canvas id="tahvel" height="500" width="500" style="border:2px solid black" 
+	  onmousedown="hiirAlla(event)" ></canvas>
+	 <input type="button" value="Kustuta" onClick="kustuta()" />
+	 <div id="vastus"></div>
+   <div id="colorholder"></div>
+  </body>
+  <script>
+    firebase.database().ref().child(kataloog).on("child_added", function(kirjeviit){
+	  kirje=kirjeviit.val();
+	  var g=document.getElementById("tahvel").getContext("2d");
+	  g.beginPath();
+	  g.rect(kirje.x, kirje.y, 15, 15, true);
+	  g.stroke();
+	});
+	firebase.database().ref().child(kataloog).on("value", function(kirjeviit){
+	  if(kirjeviit.val()==null){
+  	    var g=document.getElementById("tahvel").getContext("2d");	  
+		var t=document.getElementById("tahvel");
+		g.clearRect(0, 0, t.width, t.height);
+	  }
+	});
+
+  var colors = ["fff","000","f00","0f0","00f","88f","f8d","f88","f05","f80","0f8","cf0","08f","408","ff8","8ff"];
+    for (c in colors) {
+      var item = $('div').css("background-color", '#' + colors[c]).addClass("colorbox");
+      item.click((function () {
+        var col = colors[c];
+        return function () {
+          currentColor = col;
+        };
+      })());
+      item.appendTo('#colorholder');
+    }
+
+  </script>
+</html>

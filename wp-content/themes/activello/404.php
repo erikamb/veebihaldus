@@ -12,17 +12,20 @@ get_header(); ?>
 
 				<section class="error-404 not-found">
 					<header class="page-header">
-						<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'activello' ); ?></h1>
+						<h1 class="page-title"><?php esc_html_e( 'Kurb, aga soovitud lehte ei leitud.', 'activello' ); ?></h1>
 					</header><!-- .page-header -->
 
 					<div class="page-content">
-						<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'activello' ); ?></p>
+						<p><div style="max-width: 500px;" id="_giphy_VwoJkTfZAUBSU"></div><script> _gif_artist = "89a"; _gif_artist_avatar = "https://media.giphy.com/avatars/89a/iyZt0gfnnlTR.jpg"; var _giphy = _giphy || []; _giphy.push({id: "VwoJkTfZAUBSU",w: 386, h: 558, clickthrough_url: "http://giphy.com/gifs/89a-eightninea-VwoJkTfZAUBSU"});var g = document.createElement("script"); g.type = "text/javascript"; g.async = true;g.src = ("https:" == document.location.protocol ? "https://" : "http://") + "giphy.com/static/js/widgets/embed.js";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(g, s);</script></p>
+						<p>
+						<br>
+						<?php esc_html_e( 'Ära anna alla, proovi alltoodud teemadest midagi sobivat leida, või kasuta otsingut.', 'activello' ); ?></p>
 
 						<?php get_search_form(); ?>
 
 						<div class="row">
 							<div class="col-md-6 not-found-widget">
-								<?php the_widget( 'WP_Widget_Recent_Posts', 'title='.esc_html__( 'Recent Posts', 'activello' ) ); ?>
+								<?php the_widget( 'WP_Widget_Recent_Posts', 'title='.esc_html__( 'Hiljutised sisestused', 'activello' ) ); ?>
 							</div>
 
 							<div class="col-md-6 not-found-widget">
@@ -46,13 +49,7 @@ get_header(); ?>
 						</div>
 
 						<div class="row">
-							<div class="col-md-6 not-found-widget">
-								<?php
-								/* translators: %1$s: smiley */
-								$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'activello' ), convert_smilies( ':)' ) ) . '</p>';
-								the_widget( 'WP_Widget_Archives', 'dropdown=1&title='.esc_html__( 'Archives', 'activello' ), "after_title=</h2>$archive_content" );
-								?>
-							</div>
+							
 
 							<div class="col-md-6 not-found-widget">
 								<?php the_widget( 'WP_Widget_Tag_Cloud', 'title='.esc_html__( 'Tags', 'activello' ) ); ?>
